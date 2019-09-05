@@ -30352,7 +30352,6 @@ var QueryBuilder = function QueryBuilder(props) {
 
   var schema = {
     fields: props.fields,
-    operators: _objectSpread({}, defaultOperators, {}, props.operators),
     combinators: props.combinators,
     classNames: _objectSpread({}, defaultControlClassnames, {}, props.controlClassnames),
     createRule: createRule,
@@ -30382,7 +30381,7 @@ var QueryBuilder = function QueryBuilder(props) {
   return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
     className: "queryBuilder ".concat(schema.classNames.queryBuilder)
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_RuleGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    translations: props.translations,
+    translations: _objectSpread({}, defaultTranslations, {}, props.translations),
     rules: root.rules,
     combinator: root.combinator,
     schema: schema,
@@ -30461,6 +30460,7 @@ var Rule = function Rule(_ref) {
       operator = _ref.operator,
       value = _ref.value,
       translations = _ref.translations,
+      combinator = _ref.combinator,
       _ref$schema = _ref.schema,
       classNames = _ref$schema.classNames,
       controls = _ref$schema.controls,
@@ -30504,7 +30504,8 @@ var Rule = function Rule(_ref) {
     value: field,
     className: "rule-fields ".concat(classNames.fields),
     handleOnChange: onFieldChanged,
-    level: level
+    level: level,
+    combinator: combinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.operatorSelector, {
     field: field,
     title: translations.operators.title,
@@ -30512,7 +30513,8 @@ var Rule = function Rule(_ref) {
     value: operator,
     className: "rule-operators ".concat(classNames.operators),
     handleOnChange: onOperatorChanged,
-    level: level
+    level: level,
+    combinator: combinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.valueEditor, {
     field: field,
     title: translations.value.title,
@@ -30523,13 +30525,15 @@ var Rule = function Rule(_ref) {
     values: getValues(field, operator),
     className: "rule-value ".concat(classNames.value),
     handleOnChange: onValueChanged,
-    level: level
+    level: level,
+    combinator: combinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.removeRuleAction, {
     label: translations.removeRule.label,
     title: translations.removeRule.title,
     className: "rule-remove ".concat(classNames.removeRule),
     handleOnClick: removeRule,
-    level: level
+    level: level,
+    combinator: combinator
   }));
 };
 
@@ -30564,6 +30568,7 @@ __webpack_require__.r(__webpack_exports__);
 var RuleGroup = function RuleGroup(_ref) {
   var id = _ref.id,
       parentId = _ref.parentId,
+      parentCombinator = _ref.parentCombinator,
       combinator = _ref.combinator,
       rules = _ref.rules,
       translations = _ref.translations,
@@ -30579,7 +30584,6 @@ var RuleGroup = function RuleGroup(_ref) {
       onGroupRemove = schema.onGroupRemove,
       onPropChange = schema.onPropChange,
       onRuleAdd = schema.onRuleAdd,
-      onRuleRemove = schema.onRuleRemove,
       showCombinatorsBetweenRules = schema.showCombinatorsBetweenRules;
 
   var hasParentGroup = function hasParentGroup() {
@@ -30620,28 +30624,32 @@ var RuleGroup = function RuleGroup(_ref) {
     className: "ruleGroup-combinators ".concat(classNames.combinators),
     handleOnChange: onCombinatorChange,
     rules: rules,
-    level: level
+    level: level,
+    parentCombinator: parentCombinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.addRuleAction, {
     label: translations.addRule.label,
     title: translations.addRule.title,
     className: "ruleGroup-addRule ".concat(classNames.addRule),
     handleOnClick: addRule,
     rules: rules,
-    level: level
+    level: level,
+    combinator: combinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.addGroupAction, {
     label: translations.addGroup.label,
     title: translations.addGroup.title,
     className: "ruleGroup-addGroup ".concat(classNames.addGroup),
     handleOnClick: addGroup,
     rules: rules,
-    level: level
+    level: level,
+    combinator: combinator
   }), hasParentGroup() ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.removeGroupAction, {
     label: translations.removeGroup.label,
     title: translations.removeGroup.title,
     className: "ruleGroup-remove ".concat(classNames.removeGroup),
     handleOnClick: removeGroup,
     rules: rules,
-    level: level
+    level: level,
+    combinator: combinator
   }) : null, rules.map(function (r, idx) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
       key: r.id
@@ -30652,12 +30660,14 @@ var RuleGroup = function RuleGroup(_ref) {
       className: "ruleGroup-combinators betweenRules ".concat(classNames.combinators),
       handleOnChange: onCombinatorChange,
       rules: rules,
-      level: level
+      level: level,
+      parentCombinator: parentCombinator
     }) : null, isRuleGroup(r) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RuleGroup, {
       id: r.id,
       schema: schema,
       parentId: id,
       combinator: r.combinator,
+      parentCombinator: combinator,
       translations: translations,
       rules: r.rules
     }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Rule__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -30668,7 +30678,7 @@ var RuleGroup = function RuleGroup(_ref) {
       schema: schema,
       parentId: id,
       translations: translations,
-      onRuleRemove: onRuleRemove
+      combinator: combinator
     }));
   }));
 };
