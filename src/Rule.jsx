@@ -7,6 +7,7 @@ const Rule = ({
   operator,
   value,
   translations,
+  combinator,
   schema: {
     classNames,
     controls,
@@ -54,6 +55,7 @@ const Rule = ({
         className={`rule-fields ${classNames.fields}`}
         handleOnChange={onFieldChanged}
         level={level}
+        combinator={combinator}
       />
       <controls.operatorSelector
         field={field}
@@ -63,6 +65,7 @@ const Rule = ({
         className={`rule-operators ${classNames.operators}`}
         handleOnChange={onOperatorChanged}
         level={level}
+        combinator={combinator}
       />
       <controls.valueEditor
         field={field}
@@ -75,6 +78,7 @@ const Rule = ({
         className={`rule-value ${classNames.value}`}
         handleOnChange={onValueChanged}
         level={level}
+        combinator={combinator}
       />
       <controls.removeRuleAction
         label={translations.removeRule.label}
@@ -82,6 +86,7 @@ const Rule = ({
         className={`rule-remove ${classNames.removeRule}`}
         handleOnClick={removeRule}
         level={level}
+        combinator={combinator}
       />
     </div>
   );

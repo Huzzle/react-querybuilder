@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Rule from './Rule';
 
-const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) => {
+const RuleGroup = ({ id, parentId, parentCombinator, combinator, rules, translations, schema }) => {
   const {
     classNames,
     combinators,
@@ -59,6 +59,7 @@ const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) =>
           handleOnChange={onCombinatorChange}
           rules={rules}
           level={level}
+          parentCombinator={parentCombinator}
         />
       )}
       <controls.addRuleAction
@@ -68,6 +69,7 @@ const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) =>
         handleOnClick={addRule}
         rules={rules}
         level={level}
+        combinator={combinator}
       />
       <controls.addGroupAction
         label={translations.addGroup.label}
@@ -76,6 +78,7 @@ const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) =>
         handleOnClick={addGroup}
         rules={rules}
         level={level}
+        combinator={combinator}
       />
       {hasParentGroup() ? (
         <controls.removeGroupAction
@@ -85,6 +88,7 @@ const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) =>
           handleOnClick={removeGroup}
           rules={rules}
           level={level}
+          combinator={combinator}
         />
       ) : null}
       {rules.map((r, idx) => (
@@ -98,6 +102,7 @@ const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) =>
               handleOnChange={onCombinatorChange}
               rules={rules}
               level={level}
+              parentCombinator={parentCombinator}
             />
           ) : null}
           {isRuleGroup(r) ? (
@@ -106,6 +111,7 @@ const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) =>
               schema={schema}
               parentId={id}
               combinator={r.combinator}
+              parentCombinator={combinator}
               translations={translations}
               rules={r.rules}
             />
@@ -118,6 +124,7 @@ const RuleGroup = ({ id, parentId, combinator, rules, translations, schema }) =>
               schema={schema}
               parentId={id}
               translations={translations}
+              combinator={combinator}
             />
           )}
         </Fragment>

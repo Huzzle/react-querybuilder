@@ -128,7 +128,8 @@ This is a custom controls object that allows you to override the control element
   className: React.PropTypes.string, //CSS classNames to be applied
   handleOnClick: React.PropTypes.func, //callback function to invoke adding a <RuleGroup />
   rules: React.PropTypes.array, //Provides the number of rules already present for this group,
-  level: React.PropTypes.number //The level of the current group
+  level: React.PropTypes.number, //The level of the current group
+  combinator: React.PropTypes.string //The combinator the group this rule belongs to
 }
 ```
 
@@ -140,7 +141,8 @@ This is a custom controls object that allows you to override the control element
   className: React.PropTypes.string, //CSS classNames to be applied
   handleOnClick: React.PropTypes.func, //callback function to invoke removing a <RuleGroup />
   rules: React.PropTypes.array, //Provides the number of rules already present for this group,
-  level: React.PropTypes.number //The level of the current group
+  level: React.PropTypes.number, //The level of the current group
+  combinator: React.PropTypes.string //The combinator the group this rule belongs to
 }
 ```
 
@@ -152,7 +154,8 @@ This is a custom controls object that allows you to override the control element
   className: React.PropTypes.string, //CSS classNames to be applied
   handleOnClick: React.PropTypes.func, //callback function to invoke adding a <Rule />
   rules: React.PropTypes.array, //Provides the number of rules already present for this group,
-  level: React.PropTypes.number //The level of the current group
+  level: React.PropTypes.number, //The level of the current group
+  combinator: React.PropTypes.string //The combinator the group this rule belongs to
 }
 ```
 
@@ -163,7 +166,8 @@ This is a custom controls object that allows you to override the control element
   label: React.PropTypes.string, //"x"
   className: React.PropTypes.string, //CSS classNames to be applied
   handleOnClick: React.PropTypes.func, //callback function to invoke removing a <Rule />
-  level: React.PropTypes.number //The level of the current group
+  level: React.PropTypes.number, //The level of the current group
+  combinator: React.PropTypes.string //The combinator the group this rule belongs to
 }
 ```
 
@@ -176,7 +180,8 @@ This is a custom controls object that allows you to override the control element
   className: React.PropTypes.string, //CSS classNames to be applied
   handleOnChange: React.PropTypes.func, //callback function to update query representation
   rules: React.PropTypes.array, //Provides the number of rules already present for this group
-  level: React.PropTypes.number //The level of the current group
+  level: React.PropTypes.number, //The level of the current group
+  parentCombinator: React.PropTypes.string //combinator value from the parent group
 }
 ```
 
@@ -188,7 +193,8 @@ This is a custom controls object that allows you to override the control element
   value: React.PropTypes.string, //selected field from the existing query representation, if any
   className: React.PropTypes.string, //CSS classNames to be applied
   handleOnChange: React.PropTypes.func, //callback function to update query representation
-  level: React.PropTypes.number //The level the group this rule belongs to
+  level: React.PropTypes.number, //The level the group this rule belongs to
+  combinator: React.PropTypes.string //The combinator the group this rule belongs to
 }
 ```
 
@@ -201,7 +207,8 @@ This is a custom controls object that allows you to override the control element
   value: React.PropTypes.string, //selected operator from the existing query representation, if any
   className: React.PropTypes.string, //CSS classNames to be applied
   handleOnChange: React.PropTypes.func, //callback function to update query representation
-  level: React.PropTypes.number //The level the group this rule belongs to
+  level: React.PropTypes.number, //The level the group this rule belongs to
+  combinator: React.PropTypes.string //The combinator the group this rule belongs to
 }
 ```
 
@@ -218,6 +225,7 @@ This is a custom controls object that allows you to override the control element
   values: React.PropTypes.arrayOf(React.PropTypes.object), //
   level: React.PropTypes.number, //The level the group this rule belongs to
   className: React.PropTypes.string, //CSS classNames to be applied
+  combinator: React.PropTypes.string //The combinator the group this rule belongs to
 }
 ```
 
