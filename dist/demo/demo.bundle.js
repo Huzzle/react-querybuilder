@@ -30499,6 +30499,7 @@ var Rule = function Rule(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "rule ".concat(classNames.rule)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.fieldSelector, {
+    id: id,
     options: fields,
     title: translations.fields.title,
     value: field,
@@ -30507,6 +30508,7 @@ var Rule = function Rule(_ref) {
     level: level,
     combinator: combinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.operatorSelector, {
+    id: id,
     field: field,
     title: translations.operators.title,
     options: getOperators(field),
@@ -30516,6 +30518,7 @@ var Rule = function Rule(_ref) {
     level: level,
     combinator: combinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.valueEditor, {
+    id: id,
     field: field,
     title: translations.value.title,
     operator: operator,
@@ -30528,6 +30531,7 @@ var Rule = function Rule(_ref) {
     level: level,
     combinator: combinator
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.removeRuleAction, {
+    id: id,
     label: translations.removeRule.label,
     title: translations.removeRule.title,
     className: "rule-remove ".concat(classNames.removeRule),
@@ -30654,6 +30658,7 @@ var RuleGroup = function RuleGroup(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
       key: r.id
     }, idx && showCombinatorsBetweenRules ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.combinatorSelector, {
+      id: r.id,
       options: combinators,
       value: combinator,
       title: translations.combinators.title,
