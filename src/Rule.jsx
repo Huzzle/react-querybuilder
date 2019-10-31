@@ -49,6 +49,7 @@ const Rule = ({
   return (
     <div className={`rule ${classNames.rule}`}>
       <controls.fieldSelector
+        id={id}
         options={fields}
         title={translations.fields.title}
         value={field}
@@ -58,6 +59,7 @@ const Rule = ({
         combinator={combinator}
       />
       <controls.operatorSelector
+        id={id}
         field={field}
         title={translations.operators.title}
         options={getOperators(field)}
@@ -68,6 +70,7 @@ const Rule = ({
         combinator={combinator}
       />
       <controls.valueEditor
+        id={id}
         field={field}
         title={translations.value.title}
         operator={operator}
@@ -81,6 +84,7 @@ const Rule = ({
         combinator={combinator}
       />
       <controls.removeRuleAction
+        id={id}
         label={translations.removeRule.label}
         title={translations.removeRule.title}
         className={`rule-remove ${classNames.removeRule}`}

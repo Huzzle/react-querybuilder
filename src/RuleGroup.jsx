@@ -95,6 +95,7 @@ const RuleGroup = ({ id, parentId, parentCombinator, combinator, rules, translat
         <Fragment key={r.id}>
           {idx && showCombinatorsBetweenRules ? (
             <controls.combinatorSelector
+              id={r.id}
               options={combinators}
               value={combinator}
               title={translations.combinators.title}
